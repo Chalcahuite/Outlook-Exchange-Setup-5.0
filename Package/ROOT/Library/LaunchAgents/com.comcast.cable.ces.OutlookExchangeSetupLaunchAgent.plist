@@ -15,7 +15,7 @@ an Exchange account in Microsoft Outlook 2016 for Mac:
 
 1. Outlook Exchange Setup 5.4.0.scpt
 2. OutlookExchangeSetupLaunchAgent.sh
-3. net.talkingmoose.OutlookExchangeSetupLaunchAgent.plist
+3. com.comcast.es.OutlookExchangeSetupLaunchAgent.plist
 4. com.microsoft.Outlook.plist for creating a configuraiton profile
 
 These scripts and files may be freely modified for personal or commercial
@@ -34,11 +34,11 @@ please let me know. It is only compatible with Outlook 2016 for Mac.
 		<string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Server.app/Contents/ServerRoot/usr/bin:/Applications/Server.app/Contents/ServerRoot/usr/sbin:/usr/local/sbin</string>
 	</dict>
 	<key>Label</key>
-	<string>net.talkingmoose.OutlookExchangeSetupLaunchAgent</string>
+	<string>com.comcast.es.OutlookExchangeSetupLaunchAgent</string>
 	<key>ProgramArguments</key>
 	<array>
 		<string>/bin/sh</string>
-		<string>/Library/Talking Moose Industries/Scripts/OutlookExchangeSetupLaunchAgent.sh</string>
+		<string>/Library/CES/Scripts/OutlookExchangeSetupLaunchAgent.sh</string>
 	</array>
 	<key>RunAtLoad</key>
 	<true/>

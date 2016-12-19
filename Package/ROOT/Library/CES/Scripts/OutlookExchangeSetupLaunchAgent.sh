@@ -4,21 +4,21 @@
 # Outlook Exchange Setup 5
 # © Copyright 2008-2016 William Smith
 # bill@officeformachelp.com
-# 
+#
 # Except where otherwise noted, this work is licensed under
 # http://creativecommons.org/licenses/by/4.0/
 #
 # This file is one of four files for assisting a user with configuring
 # an Exchange account in Microsoft Outlook 2016 for Mac:
-# 
+#
 # 1. Outlook Exchange Setup 5.4.0.scpt
 # 2. OutlookExchangeSetupLaunchAgent.sh
-# 3. net.talkingmoose.OutlookExchangeSetupLaunchAgent.plist
+# 3. com.comcast.es.OutlookExchangeSetupLaunchAgent.plist
 # 4. com.microsoft.Outlook.plist for creating a configuraiton profile
-# 
+#
 # These scripts and files may be freely modified for personal or commercial
 # purposes but may not be republished for profit without prior consent.
-# 
+#
 # If you find these resources useful or have ideas for improving them,
 # please let me know. It is only compatible with Outlook 2016 for Mac.
 # --------------------------------------------
@@ -44,16 +44,16 @@ function logresult()	{
 
 if [[ ! -d "$HOME/Library/Group Containers/UBF8T346G9.Office" ]] ; then
 	logresult "Folder \"$HOME/Library/Group Containers/UBF8T346G9.Office\" does not exist."
-	
+
 	/bin/mkdir -p "$HOME/Library/Group Containers/UBF8T346G9.Office"
 	logresult "Create folder \"$HOME/Library/Group Containters/UBF8T346G9.Office\": Successful." "Create folder \"$HOME/Library/Group Containters/UBF8T346G9.Office\": Failed."
-	
+
 	/usr/bin/touch "$HOME/Library/Group Containers/UBF8T346G9.Office/OutlookProfile.plist"
-	
+
 	logresult "Create empty file \"$HOME/Library/Group Containers/UBF8T346G9.Office/OutlookProfile.plist\": Successful." "Create empty file \"$HOME/Library/Group Containers/UBF8T346G9.Office/OutlookProfile.plist\": Failed."
-	
+
 	/bin/mkdir -p "$HOME/Library/LaunchAgents"
-	
+
 	logresult "Create folder \"$HOME/Library/LaunchAgents\": Successful." "Create folder \"$HOME/Library/LaunchAgents\": Failed."
 
 	launchagent='<?xml version="1.0" encoding="UTF-8"?>
@@ -68,7 +68,7 @@ if [[ ! -d "$HOME/Library/Group Containers/UBF8T346G9.Office" ]] ; then
 		<string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Server.app/Contents/ServerRoot/usr/bin:/Applications/Server.app/Contents/ServerRoot/usr/sbin:/usr/local/sbin</string>
 	</dict>
 	<key>Label</key>
-	<string>net.talkingmoose.OutlookExchangeSetup5</string>
+	<string>com.comcast.es.OutlookExchangeSetup5</string>
 	<key>ProgramArguments</key>
 	<array>
 		<string>/usr/bin/osascript</string>
@@ -84,33 +84,33 @@ if [[ ! -d "$HOME/Library/Group Containers/UBF8T346G9.Office" ]] ; then
 </plist>
 '
 
-	/bin/echo "$launchagent" >> "$HOME/Library/LaunchAgents/net.talkingmoose.OutlookExchangeSetup5.plist"
-	
-	logresult "Create launch agent \"$HOME/Library/LaunchAgents/net.talkingmoose.OutlookExchangeSetup5.plist\": Successful." "Create folder \"$HOME/Library/LaunchAgents/net.talkingmoose.OutlookExchangeSetup5.plist\": Failed."
+	/bin/echo "$launchagent" >> "$HOME/Library/LaunchAgents/com.comcast.es.OutlookExchangeSetup5.plist"
 
-	/bin/chmod 644 "$HOME/Library/LaunchAgents/net.talkingmoose.OutlookExchangeSetup5.plist"
+	logresult "Create launch agent \"$HOME/Library/LaunchAgents/com.comcast.es.OutlookExchangeSetup5.plist\": Successful." "Create folder \"$HOME/Library/LaunchAgents/com.comcast.es.OutlookExchangeSetup5.plist\": Failed."
+
+	/bin/chmod 644 "$HOME/Library/LaunchAgents/com.comcast.es.OutlookExchangeSetup5.plist"
 
 	logresult "Set launch agent permissions to 644 (-rw-r--r--): Successful." "Set launch agent permissions to 644 (-rw-r--r--): Failed."
 
-	/bin/launchctl load "$HOME/Library/LaunchAgents/net.talkingmoose.OutlookExchangeSetup5.plist"
+	/bin/launchctl load "$HOME/Library/LaunchAgents/com.comcast.es.OutlookExchangeSetup5.plist"
 
 	logresult "Load launch agent: Successful." "Load launch agent: Failed."
-	
+
 else
 	if [[ -d "$HOME/Library/Group Containers/UBF8T346G9.Office" ]] ; then
 		logresult "$HOME/Library/Group Containers/UBF8T346G9.Office folder already exists. Doing nothing." "$HOME/Library/Group Containers/UBF8T346G9.Office folder does not exist but it should exist already. Something may be wrong."
 	fi
-	
+
 	if [[ -f "$HOME/Library/Group Containers/UBF8T346G9.Office/OutlookProfile.plist" ]] ; then
 		logresult "$HOME/Library/Group Containers/UBF8T346G9.Office/OutlookProfile.plist already exists. Doing nothing." "$HOME/Library/Group Containers/UBF8T346G9.Office/OutlookProfile.plist does not exist but it should exist already. Something may be wrong."
 	fi
-	
+
 	if [[ -d "$HOME/Library/LaunchAgents" ]] ; then
 		logresult "$HOME/Library/LaunchAgents already exists. Doing nothing." "$HOME/Library/LaunchAgents does not exist but it should exist already. Something may be wrong."
 	fi
-	
-	if [[ ! -f "$HOME/Library/LaunchAgents/net.talkingmoose.OutlookExchangeSetup5.plist" ]] ; then
-		logresult "$HOME/Library/LaunchAgents/net.talkingmoose.OutlookExchangeSetup5.plist does not exist. Doing nothing." "$HOME/Library/LaunchAgents/net.talkingmoose.OutlookExchangeSetup5.plist exists. Something may be wrong."
+
+	if [[ ! -f "$HOME/Library/LaunchAgents/com.comcast.es.OutlookExchangeSetup5.plist" ]] ; then
+		logresult "$HOME/Library/LaunchAgents/com.comcast.es.OutlookExchangeSetup5.plist does not exist. Doing nothing." "$HOME/Library/LaunchAgents/com.comcast.es.OutlookExchangeSetup5.plist exists. Something may be wrong."
 	fi
 fi
 
