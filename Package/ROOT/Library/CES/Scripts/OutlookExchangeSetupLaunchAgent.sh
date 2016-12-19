@@ -13,7 +13,7 @@
 #
 # 1. Outlook Exchange Setup 5.4.0.scpt
 # 2. OutlookExchangeSetupLaunchAgent.sh
-# 3. com.comcast.es.OutlookExchangeSetupLaunchAgent.plist
+# 3. com.comcast.ces.OutlookExchangeSetupLaunchAgent.plist
 # 4. com.microsoft.Outlook.plist for creating a configuraiton profile
 #
 # These scripts and files may be freely modified for personal or commercial
@@ -68,7 +68,7 @@ if [[ ! -d "$HOME/Library/Group Containers/UBF8T346G9.Office" ]] ; then
 		<string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Server.app/Contents/ServerRoot/usr/bin:/Applications/Server.app/Contents/ServerRoot/usr/sbin:/usr/local/sbin</string>
 	</dict>
 	<key>Label</key>
-	<string>com.comcast.es.OutlookExchangeSetup5</string>
+	<string>com.comcast.ces.OutlookExchangeSetup5</string>
 	<key>ProgramArguments</key>
 	<array>
 		<string>/usr/bin/osascript</string>
@@ -84,15 +84,15 @@ if [[ ! -d "$HOME/Library/Group Containers/UBF8T346G9.Office" ]] ; then
 </plist>
 '
 
-	/bin/echo "$launchagent" >> "$HOME/Library/LaunchAgents/com.comcast.es.OutlookExchangeSetup5.plist"
+	/bin/echo "$launchagent" >> "$HOME/Library/LaunchAgents/com.comcast.ces.OutlookExchangeSetup5.plist"
 
-	logresult "Create launch agent \"$HOME/Library/LaunchAgents/com.comcast.es.OutlookExchangeSetup5.plist\": Successful." "Create folder \"$HOME/Library/LaunchAgents/com.comcast.es.OutlookExchangeSetup5.plist\": Failed."
+	logresult "Create launch agent \"$HOME/Library/LaunchAgents/com.comcast.ces.OutlookExchangeSetup5.plist\": Successful." "Create folder \"$HOME/Library/LaunchAgents/com.comcast.ces.OutlookExchangeSetup5.plist\": Failed."
 
-	/bin/chmod 644 "$HOME/Library/LaunchAgents/com.comcast.es.OutlookExchangeSetup5.plist"
+	/bin/chmod 644 "$HOME/Library/LaunchAgents/com.comcast.ces.OutlookExchangeSetup5.plist"
 
 	logresult "Set launch agent permissions to 644 (-rw-r--r--): Successful." "Set launch agent permissions to 644 (-rw-r--r--): Failed."
 
-	/bin/launchctl load "$HOME/Library/LaunchAgents/com.comcast.es.OutlookExchangeSetup5.plist"
+	/bin/launchctl load "$HOME/Library/LaunchAgents/com.comcast.ces.OutlookExchangeSetup5.plist"
 
 	logresult "Load launch agent: Successful." "Load launch agent: Failed."
 
@@ -109,8 +109,8 @@ else
 		logresult "$HOME/Library/LaunchAgents already exists. Doing nothing." "$HOME/Library/LaunchAgents does not exist but it should exist already. Something may be wrong."
 	fi
 
-	if [[ ! -f "$HOME/Library/LaunchAgents/com.comcast.es.OutlookExchangeSetup5.plist" ]] ; then
-		logresult "$HOME/Library/LaunchAgents/com.comcast.es.OutlookExchangeSetup5.plist does not exist. Doing nothing." "$HOME/Library/LaunchAgents/com.comcast.es.OutlookExchangeSetup5.plist exists. Something may be wrong."
+	if [[ ! -f "$HOME/Library/LaunchAgents/com.comcast.ces.OutlookExchangeSetup5.plist" ]] ; then
+		logresult "$HOME/Library/LaunchAgents/com.comcast.ces.OutlookExchangeSetup5.plist does not exist. Doing nothing." "$HOME/Library/LaunchAgents/com.comcast.ces.OutlookExchangeSetup5.plist exists. Something may be wrong."
 	fi
 fi
 
